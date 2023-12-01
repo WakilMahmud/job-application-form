@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { EDUCATION_INFO } from "../../routes/routes";
+import { InformationContext } from "../../App";
 
 const WorkingInfo = () => {
+	// const { info, setInfo } = useContext(InformationContext);
 	const [workingData, setWorkingData] = useState(null);
 
 	const { register, handleSubmit } = useForm();
 	const onSubmit = (data) => {
-		console.log(data);
+		alert(JSON.stringify(data));
+		// setInfo({ ...info, data });
 		setWorkingData(data);
+		// console.log(info);
 	};
 
 	return (

@@ -1,19 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { EDUCATION_INFO } from "../../routes/routes";
+import { InformationContext } from "../../App";
 
 const PersonalInfo = () => {
-	const navigate = useNavigate();
+	// const { info, setInfo } = useContext(InformationContext);
 	const [personalData, setPersonalData] = useState(null);
+	const navigate = useNavigate();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 	const onSubmit = (data) => {
-		console.log(data);
+		alert(JSON.stringify(data));
 		setPersonalData(data);
+		// setInfo({ ...info, data });
 		navigate(EDUCATION_INFO);
 	};
 
@@ -27,7 +30,6 @@ const PersonalInfo = () => {
 					type="text"
 					id="name"
 					name="name"
-					defaultValue={personalData?.name}
 					placeholder="Enter your name"
 					className="bg-gray-100 p-2 rounded"
 					{...register("name", { required: true })}
