@@ -22,14 +22,13 @@ const EducationInfo = () => {
 				<label htmlFor="highest_degree" className="font-bold">
 					Highest Degree
 				</label>
-				<input
-					type="text"
-					id="highest_degree"
-					name="highest_degree"
-					placeholder="Enter your Highest Degree"
-					className="bg-gray-100 p-2 rounded"
-					{...register("highest_degree")}
-				/>
+				<select id="highest_degree" name="highest_degree" className="bg-gray-100 p-2 rounded" {...register("highest_degree")}>
+					<option>Enter your Highest Degree</option>
+					<option value="MSC">MSC</option>
+					<option value="BSC">BSC</option>
+					<option value="HSC">HSC</option>
+					<option value="SSC">SSC</option>
+				</select>
 			</div>
 
 			<div className="flex flex-col gap-2">
