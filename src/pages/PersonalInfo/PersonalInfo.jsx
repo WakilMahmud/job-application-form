@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { EDUCATION_INFO } from "../../routes/routes";
 
 const PersonalInfo = () => {
+	const navigate = useNavigate();
 	const [personalData, setPersonalData] = useState(null);
 	const {
 		register,
@@ -13,6 +14,7 @@ const PersonalInfo = () => {
 	const onSubmit = (data) => {
 		console.log(data);
 		setPersonalData(data);
+		navigate(EDUCATION_INFO);
 	};
 
 	return (
@@ -25,6 +27,7 @@ const PersonalInfo = () => {
 					type="text"
 					id="name"
 					name="name"
+					defaultValue={personalData?.name}
 					placeholder="Enter your name"
 					className="bg-gray-100 p-2 rounded"
 					{...register("name", { required: true })}
@@ -98,10 +101,11 @@ const PersonalInfo = () => {
 			</div>
 
 			<div className="flex gap-4 items-center justify-end mt-4">
-				<p className="text-gray-400">Previous</p>
-				<Link to={EDUCATION_INFO}>
-					<button className="w-20 h-10 rounded-md bg-blue-500 text-white">Next</button>
-				</Link>
+				<button className="text-gray-400" disabled>
+					Previous
+				</button>
+
+				<button className="w-20 h-10 rounded-md bg-blue-500 text-white">Next</button>
 			</div>
 		</form>
 	);
